@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse navbar-fixed-top>
+    <div class="container">
+        <div id="navbar" class="collapse navbar-collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group" ng-if="$root.expertMode">
+                    <label class="navbar-text" for="difficulty">Block difficulty:</label>
+                    <select id="difficulty"
+                            ng-model="$root.difficulty"
+                            ng-options="(value + ' (' + $root.difficultyPrefix(value) + ')') for value in [3,4,5,6,7,8,9,10]"
+                            ng-change="$root.$broadcast('difficulty-change');"
+                            class="form-control">
+                    </select>
+                </div>
+            </form>
+            <ul style="align-items: center;" class="nav navbar-nav ">
+                <li ng-class="{active: $root.isActive('/block')}">
+                    <a href="#!/block">Block</a>
+                </li>
+                <li ng-class="{active: $root.isActive('/blockchain')}">
+                    <a href="#!/blockchain">Blockchain</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ng-class="$root.$route.current.containerClass" ng-view>
+
+</div>
